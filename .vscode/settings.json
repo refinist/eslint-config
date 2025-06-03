@@ -1,0 +1,9 @@
+{
+  "editor.formatOnSave": true,
+  // Auto fix
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "exportall.config.folderListener": ["/src/configs"],
+  "exportall.config.semis": true
+}
