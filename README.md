@@ -4,13 +4,18 @@ ESLint config preset for JavaScript, TypeScript, Vue, and Prettier
 
 ## Features
 
-- 🎨 Format with **Prettier**
-- ⚡ Designed to work with **Vue3** & **TypeScript**
-- 📋 [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new)
-- 🚫 Ignores common files like `node_modules`, `dist` and files in `.gitignore`
-- 🎯 Best practices, only one-line of config
-- 💯 Just to pursue higher code quality, no more
-- [ ] 🌐 Add more language support
+[x] 🎨 Format with **Prettier**
+
+[x] ⚡ Designed to work with **Vue3** & **TypeScript**
+
+[x] 📋 [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new)
+[x] 🚫 Ignores common files like `node_modules`, `dist` and files in `.gitignore`
+
+[x] 🎯 Best practices, only one-line of config
+
+[x] 💯 Just to pursue higher code quality, no more
+
+[ ] 🌐 Add more language support
 
 ## Install
 
