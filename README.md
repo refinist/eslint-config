@@ -14,16 +14,17 @@ ESLint config preset for JavaScript, TypeScript, Vue, and Prettier
 
 ## Install
 
+Using pnpm, yarn, or npm
+
 ```bash
+# with pnpm
 pnpm add -D @refinist/eslint-config
-```
 
-```bash
-npm i -D @refinist/eslint-config
-```
-
-```bash
+# with yarn
 yarn add -D @refinist/eslint-config
+
+# with npm
+npm i -D @refinist/eslint-config
 ```
 
 Require Node.js >= 22.16.0, and ESLint >= 9.5.0.
