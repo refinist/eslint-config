@@ -200,6 +200,7 @@ pnpm run lint
 pnpm run lint:fix
 ```
 
+> [!WARNING]
 > If your ESLint configuration file is `.ts` and you encounter errors when running `pnpm run lint`, it's because you don't have the jiti library as a dependency. [See reference](https://eslint.org/docs/latest/use/configure/configuration-files#typescript-configuration-files), or you can simply switch to `eslint.config.js` instead of using `.ts`, which works great too!
 
 Done!
