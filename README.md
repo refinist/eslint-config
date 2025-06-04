@@ -217,6 +217,8 @@ Done!
 }
 ```
 
+Inspired by [@sxzz](https://github.com/sxzz) and [@antfu](https://github.com/antfu)
+
 ## License
 
 [MIT](./LICENSE)
