@@ -27,7 +27,7 @@ yarn add -D @refinist/eslint-config
 npm i -D @refinist/eslint-config
 ```
 
-Require Node.js >= 22.16.0, and ESLint >= 9.5.0.
+Require Node.js >= 22.0.0, and ESLint >= 9.5.0.
 
 ## Usage
 
