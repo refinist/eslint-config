@@ -1,9 +1,21 @@
-import { ignores, javascript, typescript, vue, prettier } from './configs';
+import {
+  ignores,
+  javascript,
+  typescript,
+  vue,
+  prettier,
+  stylistic
+} from './configs';
 import { hasVue } from './env';
 import type { Config } from './types';
 import type { Linter } from 'eslint';
 
-const presetBasic = () => [...ignores(), ...javascript(), ...typescript()];
+const presetBasic = () => [
+  ...ignores(),
+  ...javascript(),
+  ...stylistic(),
+  ...typescript()
+];
 
 export interface Options {
   vue?: boolean;
