@@ -9,6 +9,7 @@ ESLint config preset for JavaScript, TypeScript, Vue, and Prettier
 - [x] 📋 [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new)
 - [x] 🚫 Ignores common files like `node_modules`, `dist` and files in `.gitignore`
 - [x] 🎯 Best practices, only one-line of config
+- [x] Use `@stylistic/eslint-plugin`'s [@stylistic/spaced-comment](https://eslint.style/rules/spaced-comment) rule to add spaces after comments (perfect for perfectionists 😬)
 - [x] 💯 Just to pursue higher code quality, no more
 - [ ] 🌐 Add more language support
 
