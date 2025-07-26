@@ -37,11 +37,12 @@ bun add -D @refinist/eslint-config
 ```
 
 > [!WARNING]
-> If you use react, please install these three packages `pnpm add -D @eslint-react/eslint-plugin eslint-plugin-react-hooks eslint-plugin-react-refresh` and import react eslint config `import { react } from '@refinist/eslint-config'` like this 👇
+> If you use react, please install these three packages `pnpm add -D @eslint-react/eslint-plugin eslint-plugin-react-hooks eslint-plugin-react-refresh` and import react eslint config `import { react } from '@refinist/eslint-config/react'` like this 👇
 
 ```ts
 // eslint.config.ts
-import { refinist, react } from '@refinist/eslint-config';
+import { refinist } from '@refinist/eslint-config';
+import { react } from '@refinist/eslint-config/react';
 export default refinist({}, react());
 ```
 

@@ -37,11 +37,12 @@ bun add -D @refinist/eslint-config
 ```
 
 > [!WARNING]
-> 如果你使用 react，请额外安装这三个包 `pnpm add -D @eslint-react/eslint-plugin eslint-plugin-react-hooks eslint-plugin-react-refresh`，然后手动引入 react eslint 包 `import { react } from '@refinist/eslint-config'` 配置如下👇
+> 如果你使用 react，请额外安装这三个包 `pnpm add -D @eslint-react/eslint-plugin eslint-plugin-react-hooks eslint-plugin-react-refresh`，然后手动引入 react eslint 包 `import { react } from '@refinist/eslint-config/react'` 配置如下👇
 
 ```ts
 // eslint.config.ts
-import { refinist, react } from '@refinist/eslint-config';
+import { refinist } from '@refinist/eslint-config';
+import { react } from '@refinist/eslint-config/react';
 export default refinist({}, react());
 ```
 
