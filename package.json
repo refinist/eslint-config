@@ -1,6 +1,6 @@
 {
   "name": "@refinist/eslint-config",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "description": "ESLint config for @refinist.",
   "homepage": "https://github.com/refinist/eslint-config#readme",
   "bugs": {
