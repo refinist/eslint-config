@@ -2,6 +2,13 @@
   "name": "@refinist/eslint-config",
   "version": "1.0.0",
   "description": "ESLint config for @refinist.",
+  "keywords": [
+    "eslint",
+    "eslint-config",
+    "flat",
+    "eslint-flat-config",
+    "refinist"
+  ],
   "homepage": "https://github.com/refinist/eslint-config#readme",
   "bugs": {
     "url": "https://github.com/refinist/eslint-config/issues"
