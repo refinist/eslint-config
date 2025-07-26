@@ -1,21 +1,26 @@
-# @refinist/eslint-config [![npm](https://img.shields.io/npm/v/@refinist/eslint-config.svg)](https://npmjs.com/package/@refinist/eslint-config) [![Unit Test](https://github.com/refinist/eslint-config/actions/workflows/unit-test.yml/badge.svg)](https://github.com/refinist/eslint-config/actions/workflows/unit-test.yml) [![node compatibility](https://img.shields.io/node/v/@refinist/eslint-config)](https://nodejs.org/en/about/releases/) [![eslint compatibility](https://img.shields.io/badge/eslint->=9.5.0-brightgreen)](https://eslint.org/docs/latest/user-guide/getting-started)
+# @refinist/eslint-config
 
-ESLint config preset for JavaScript, TypeScript, Vue, and Prettier
+[![npm](https://img.shields.io/npm/v/@refinist/eslint-config.svg?colorA=4733bc&colorB=8080eb)](https://npmjs.com/package/@refinist/eslint-config) [![Unit Test](https://img.shields.io/github/actions/workflow/status/refinist/eslint-config/unit-test.yml?colorA=4733bc&colorB=8080eb&label=Unit%20Test)](https://github.com/refinist/eslint-config/actions/workflows/unit-test.yml) [![node compatibility](https://img.shields.io/node/v/@refinist/eslint-config?colorA=4733bc&colorB=8080eb)](https://nodejs.org/en/about/releases/) [![eslint compatibility](https://img.shields.io/badge/eslint->=9.5.0-brightgreen?colorA=4733bc&colorB=8080eb)](https://eslint.org/docs/latest/user-guide/getting-started)
+
+ESLint config preset for JavaScript, TypeScript, Vue, React, and Prettier
+
+> English Documentation | [中文文档](./README.zh-CN.md)
 
 ## Features
 
 - [x] 🎨 Format with **Prettier**
-- [x] ⚡ Designed to work with **Vue3** & **TypeScript**
+- [x] ⚡ Designed to work with **Vue3** & **TypeScript** or **React** & **TypeScript**
 - [x] 📋 [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new)
 - [x] 🚫 Ignores common files like `node_modules`, `dist` and files in `.gitignore`
 - [x] 🎯 Best practices, only one-line of config
-- [x] Use `@stylistic/eslint-plugin`'s [@stylistic/spaced-comment](https://eslint.style/rules/spaced-comment) rule to add spaces after comments (perfect for perfectionists 😬)
+- [x] 💬 Use `@stylistic/eslint-plugin`'s [@stylistic/spaced-comment](https://eslint.style/rules/spaced-comment) rule to add spaces after comments (perfect for perfectionists 😬)
+- [x] 💡 **React** + **TypeScript** will enable `type-aware` by default, [related documentation](https://typescript-eslint.io/getting-started/typed-linting/)
 - [x] 💯 Just to pursue higher code quality, no more
 - [ ] 🌐 Add more language support
 
 ## Install
 
-Using pnpm, yarn, or npm
+Using pnpm, yarn, npm, or bun
 
 ```bash
 # with pnpm
@@ -26,9 +31,15 @@ yarn add -D @refinist/eslint-config
 
 # with npm
 npm i -D @refinist/eslint-config
+
+# with bun
+bun add -D @refinist/eslint-config
 ```
 
-Require Node.js >= 22.0.0, and ESLint >= 9.5.0.
+> [!WARNING]
+> If you use react, please install these three packages `pnpm add -D @eslint-react/eslint-plugin eslint-plugin-react-hooks eslint-plugin-react-refresh`
+
+Require Node.js >= 20.0.0, and ESLint >= 9.5.0.
 
 ## Usage
 
@@ -43,6 +54,7 @@ export default refinist();
 import { refinist } from '@refinist/eslint-config';
 export default refinist({
   vue: true, // auto detection
+  // react: true, // auto detection
   prettier: true // default true
 });
 ```
@@ -91,15 +103,17 @@ Combine with [@refinist/prettier-config](https://github.com/refinist/prettier-co
 #### Install
 
 ```bash
+# with pnpm
 pnpm add -D @refinist/prettier-config
-```
 
-```bash
-npm i -D @refinist/prettier-config
-```
-
-```bash
+# with yarn
 yarn add -D @refinist/prettier-config
+
+# with npm
+npm i -D @refinist/prettier-config
+
+# with bun
+bun add -D @refinist/prettier-config
 ```
 
 #### package.json config(recommended)

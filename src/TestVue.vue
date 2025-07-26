@@ -6,7 +6,7 @@ const foo = 'foo';
 const bar = 'bar';
 
 /**
- *comment test
+ * comment test
  */
 const foobar = 'foobar';
 </script>

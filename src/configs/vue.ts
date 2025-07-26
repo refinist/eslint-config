@@ -27,7 +27,7 @@ export const reactivityTransform = (): Config[] => [
   }
 ];
 
-const vueTs: Config[] = typescriptCore
+const vueTs: Config[] = typescriptCore()
   .filter(config => config.name !== 'typescript-eslint/base')
   .map(config => {
     return {
