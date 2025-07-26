@@ -3,12 +3,11 @@ import {
   javascript,
   typescript,
   vue,
-  react,
   prettier,
   stylistic
 } from './configs';
-import { hasVue, hasReact } from './env';
-import type { Config } from './types';
+import { hasVue } from './env';
+import type { Arrayable, Config } from './types';
 import type { Linter } from 'eslint';
 
 const presetBasic = ({ typeAware = false }: { typeAware?: boolean } = {}) => [
@@ -21,34 +20,32 @@ const presetBasic = ({ typeAware = false }: { typeAware?: boolean } = {}) => [
 
 export interface Options {
   vue?: boolean;
-  react?: boolean;
   prettier?: boolean;
 }
 
 export function refinist(
   options: Options = {},
   // Can be a non-strict Config, or the original Linter config
-  ...userConfigs: (Config | Linter.Config)[]
+  ...userConfigs: Arrayable<Config | Linter.Config>[]
 ): Config[] {
-  const {
-    vue: enableVue = hasVue(),
-    react: enableReact = hasReact(),
-    prettier: enablePrettier = true
-  } = options;
+  const { vue: enableVue = hasVue(), prettier: enablePrettier = true } =
+    options;
+  const _userConfigs = [...userConfigs.flat()];
+  const hasReact = _userConfigs.some(_ => _.name?.includes('refinist/react'));
 
-  const configs: Config[] = [...presetBasic({ typeAware: enableReact })];
+  const configs: Config[] = [
+    ...presetBasic({
+      typeAware: hasReact
+    })
+  ];
 
   if (enableVue) {
     configs.push(...vue());
-  }
-
-  if (enableReact) {
-    configs.push(...react());
   }
 
   if (enablePrettier) {
     configs.push(...prettier());
   }
 
-  return [...configs, ...userConfigs];
+  return [...configs, ..._userConfigs];
 }

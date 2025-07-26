@@ -37,7 +37,13 @@ bun add -D @refinist/eslint-config
 ```
 
 > [!WARNING]
-> If you use react, please install these three packages `pnpm add -D @eslint-react/eslint-plugin eslint-plugin-react-hooks eslint-plugin-react-refresh`
+> If you use react, please install these three packages `pnpm add -D @eslint-react/eslint-plugin eslint-plugin-react-hooks eslint-plugin-react-refresh` and import react eslint config `import { react } from '@refinist/eslint-config'` like this 👇
+
+```ts
+// eslint.config.ts
+import { refinist, react } from '@refinist/eslint-config';
+export default refinist({}, react());
+```
 
 Require Node.js >= 20.0.0, and ESLint >= 9.5.0.
 
@@ -54,7 +60,6 @@ export default refinist();
 import { refinist } from '@refinist/eslint-config';
 export default refinist({
   vue: true, // auto detection
-  // react: true, // auto detection
   prettier: true // default true
 });
 ```

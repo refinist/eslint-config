@@ -3,3 +3,5 @@ import type { Linter } from 'eslint';
 export type Config = Omit<Linter.Config<Linter.RulesRecord>, 'plugins'> & {
   plugins?: Record<string, any>;
 };
+
+export type Arrayable<T> = T | T[];

@@ -37,7 +37,13 @@ bun add -D @refinist/eslint-config
 ```
 
 > [!WARNING]
-> 如果你使用 react，请额外安装这三个包 `pnpm add -D @eslint-react/eslint-plugin eslint-plugin-react-hooks eslint-plugin-react-refresh`
+> 如果你使用 react，请额外安装这三个包 `pnpm add -D @eslint-react/eslint-plugin eslint-plugin-react-hooks eslint-plugin-react-refresh`，然后手动引入 react eslint 包 `import { react } from '@refinist/eslint-config'` 配置如下👇
+
+```ts
+// eslint.config.ts
+import { refinist, react } from '@refinist/eslint-config';
+export default refinist({}, react());
+```
 
 需要 Node.js >= 20.0.0 和 ESLint >= 9.5.0。
 
@@ -54,7 +60,6 @@ export default refinist();
 import { refinist } from '@refinist/eslint-config';
 export default refinist({
   vue: true, // 自动检测
-  // react: true, // 自动检测
   prettier: true // 默认为 true
 });
 ```
