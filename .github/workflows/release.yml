@@ -8,3 +8,7 @@ on:
 jobs:
   release:
     uses: refinist/workflows/.github/workflows/release.yml@v1
+
+    permissions:
+      contents: write
+      id-token: write
