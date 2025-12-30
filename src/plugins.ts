@@ -4,6 +4,7 @@ export { default as pluginPrettier } from 'eslint-plugin-prettier';
 export { default as pluginIgnore } from 'eslint-config-flat-gitignore';
 export { default as pluginPrettierRecommended } from 'eslint-plugin-prettier/recommended';
 export { default as pluginStylistic } from '@stylistic/eslint-plugin';
+export { default as pluginBetterTailwindcss } from 'eslint-plugin-better-tailwindcss';
 
 export { default as configJs } from '@eslint/js';
 

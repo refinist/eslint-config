@@ -13,7 +13,8 @@
 - [x] 📋 [ESLint 扁平配置](https://eslint.org/docs/latest/use/configure/configuration-files-new)
 - [x] 🚫 自动忽略常见文件如 `node_modules`、`dist` 和 `.gitignore` 中的文件
 - [x] 🎯 最佳实践，只需一行配置
-- [x] 💬 使用 `@stylistic/eslint-plugin` 的 [@stylistic/spaced-comment](https://eslint.style/rules/spaced-comment) 规则，在注释后添加空格（适合强迫症😬）
+- [x] 💬 内置 `@stylistic/eslint-plugin` 的 [@stylistic/spaced-comment](https://eslint.style/rules/spaced-comment) 规则，在注释后添加空格（适合强迫症😬）
+- [x] <img src="https://avatars.githubusercontent.com/u/67109815" width="18" height="18" alt="Tailwindcss"> 内置 Tailwindcss 3/4 自动格式化/纠错插件支持，[相关文档](https://github.com/schoero/eslint-plugin-better-tailwindcss)，使用方法见[这里](#使用-tailwindcss-eslint-插件)
 - [x] 💡 **React** + **TypeScript** 会默认启用 `type-aware`，[相关资料](https://typescript-eslint.io/getting-started/typed-linting/)
 - [x] 💯 只为追求更高的代码质量，仅此而已
 - [ ] 🌐 添加更多语言支持
@@ -102,6 +103,40 @@ export default refinist(
 );
 ```
 
+### 使用 Tailwindcss ESLint 插件
+
+```ts
+// eslint.config.ts
+import { refinist } from '@refinist/eslint-config';
+export default refinist({
+  // ...
+  tailwindcss: {
+    // 配置参考 https://github.com/schoero/eslint-plugin-better-tailwindcss/blob/main/docs/settings/settings.md#settings
+    entryPoint: 'src/global.css'
+  }
+});
+```
+
+规则覆盖
+
+````ts
+// eslint.config.ts
+import { refinist, GLOB_TAILWINDCSS } from '@refinist/eslint-config';
+export default refinist(
+  {},
+
+  {
+    files: GLOB_TAILWINDCSS,
+    // https://github.com/schoero/eslint-plugin-better-tailwindcss/tree/main/docs/rules
+    rules: {
+      'better-tailwindcss/no-unregistered-classes': [
+        'warn',
+        { detectComponentClasses: true }
+      ]
+    }
+  }
+);
+
 ### 🔗 Prettier 配置
 
 与 [@refinist/prettier-config](https://github.com/refinist/prettier-config) 结合使用
@@ -120,7 +155,7 @@ npm i -D @refinist/prettier-config
 
 # 使用 bun
 bun add -D @refinist/prettier-config
-```
+````
 
 #### package.json 配置（推荐）
 

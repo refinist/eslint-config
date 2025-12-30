@@ -4,7 +4,9 @@ import {
   typescript,
   vue,
   prettier,
-  stylistic
+  stylistic,
+  tailwindcss,
+  type TailwindcssOptions
 } from './configs';
 import { hasVue } from './env';
 import type { Arrayable, Config } from './types';
@@ -21,6 +23,7 @@ const presetBasic = ({ typeAware = false }: { typeAware?: boolean } = {}) => [
 export interface Options {
   vue?: boolean;
   prettier?: boolean;
+  tailwindcss?: TailwindcssOptions;
 }
 
 export function refinist(
@@ -28,8 +31,11 @@ export function refinist(
   // Can be a non-strict Config, or the original Linter config
   ...userConfigs: Arrayable<Config | Linter.Config>[]
 ): Config[] {
-  const { vue: enableVue = hasVue(), prettier: enablePrettier = true } =
-    options;
+  const {
+    vue: enableVue = hasVue(),
+    prettier: enablePrettier = true,
+    tailwindcss: tailwindcssOptions
+  } = options;
   const _userConfigs = [...userConfigs.flat()];
   const hasReact = _userConfigs.some(_ => _.name?.includes('refinist/react'));
 
@@ -45,6 +51,10 @@ export function refinist(
 
   if (enablePrettier) {
     configs.push(...prettier());
+  }
+
+  if (tailwindcssOptions) {
+    configs.push(...tailwindcss(tailwindcssOptions));
   }
 
   return [...configs, ..._userConfigs];

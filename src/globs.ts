@@ -66,3 +66,12 @@ export const GLOB_EXCLUDE: string[] = [
   '**/auto-import?(s).d.ts',
   '**/components.d.ts'
 ];
+
+export const GLOB_TAILWINDCSS: string[] = [
+  GLOB_JS,
+  GLOB_JSX,
+  GLOB_TS,
+  GLOB_TSX,
+  GLOB_VUE,
+  GLOB_HTML
+];
