@@ -1,7 +1,7 @@
 {
   "name": "@refinist/eslint-config",
   "version": "1.0.7",
-  "description": "ESLint config for @refinist.",
+  "description": "Out-of-the-box ESLint configuration",
   "keywords": [
     "eslint",
     "eslint-config",
