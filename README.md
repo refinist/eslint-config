@@ -105,6 +105,9 @@ export default refinist(
 
 ### Use Tailwindcss ESLint plugin
 
+> [!WARNING]
+> If you are using [@refinist/prettier-config/with-tailwindcss](https://github.com/refinist/prettier-config/tree/main?tab=readme-ov-file#with-tailwind-css), you can skip the following configuration. Since their functionality is similar, you can also compare their differences, it's up to you.
+
 ```ts
 // eslint.config.ts
 import { refinist } from '@refinist/eslint-config';

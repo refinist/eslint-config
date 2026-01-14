@@ -105,6 +105,9 @@ export default refinist(
 
 ### 使用 Tailwindcss ESLint 插件
 
+> [!WARNING]
+> 如果你使用了 [@refinist/prettier-config/with-tailwindcss](https://github.com/refinist/prettier-config/tree/main?tab=readme-ov-file#with-tailwind-css)，请忽略下面的配置。因为它们的功能类似，你也可以对比它们的区别，这取决于你
+
 ```ts
 // eslint.config.ts
 import { refinist } from '@refinist/eslint-config';
