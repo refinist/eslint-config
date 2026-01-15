@@ -6,6 +6,10 @@ import {
   prettier,
   stylistic,
   tailwindcss,
+  sortImports,
+  sortPackageJson,
+  sortPnpmWorkspace,
+  sortTsconfig,
   type TailwindcssOptions
 } from './configs';
 import { hasVue } from './env';
@@ -17,13 +21,23 @@ const presetBasic = ({ typeAware = false }: { typeAware?: boolean } = {}) => [
   ...javascript(),
   ...stylistic(),
 
-  ...typescript({ typeAware })
+  ...typescript({ typeAware }),
+  ...sortImports()
 ];
 
 export interface Options {
   vue?: boolean;
   prettier?: boolean;
   tailwindcss?: TailwindcssOptions;
+  /**
+   * sort config files keys
+   * files: package.json, pnpm-workspace.yaml, tsconfig.json, tsconfig.*.json
+   *
+   * sortImports is enabled by default
+   *
+   * @default true
+   */
+  sort?: boolean;
 }
 
 export function refinist(
@@ -34,7 +48,8 @@ export function refinist(
   const {
     vue: enableVue = hasVue(),
     prettier: enablePrettier = true,
-    tailwindcss: tailwindcssOptions
+    tailwindcss: tailwindcssOptions,
+    sort: enableSort = true
   } = options;
   const _userConfigs = [...userConfigs.flat()];
   const hasReact = _userConfigs.some(_ => _.name?.includes('refinist/react'));
@@ -55,6 +70,12 @@ export function refinist(
 
   if (tailwindcssOptions) {
     configs.push(...tailwindcss(tailwindcssOptions));
+  }
+
+  if (enableSort) {
+    configs.push(...sortPackageJson());
+    configs.push(...sortPnpmWorkspace());
+    configs.push(...sortTsconfig());
   }
 
   return [...configs, ..._userConfigs];

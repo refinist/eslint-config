@@ -5,3 +5,4 @@ export * from './stylistic';
 export * from './tailwindcss';
 export * from './typescript';
 export * from './vue';
+export * from './sort';
