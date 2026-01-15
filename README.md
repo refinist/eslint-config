@@ -8,16 +8,17 @@ ESLint config preset for JavaScript, TypeScript, Vue, React, and Prettier
 
 ## Features
 
-- [x] 🎨 Format with **Prettier**
-- [x] ⚡ Designed to work with **Vue3** & **TypeScript** or **React** & **TypeScript**
-- [x] 📋 [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new)
-- [x] 🚫 Ignores common files like `node_modules`, `dist` and files in `.gitignore`
-- [x] 🎯 Best practices, only one-line of config
-- [x] 💬 Built-in `@stylistic/eslint-plugin`'s [@stylistic/spaced-comment](https://eslint.style/rules/spaced-comment) rule to add spaces after comments (perfect for perfectionists 😬)
-- [x] <img src="https://avatars.githubusercontent.com/u/67109815" width="18" height="18" alt="Tailwindcss"> Built-in Tailwindcss 3/4 auto formatting/linting plugin support, [related documentation](https://github.com/schoero/eslint-plugin-better-tailwindcss), see [usage](#use-tailwindcss-eslint-plugin) for details
-- [x] 💡 **React** + **TypeScript** will enable `type-aware` by default, [related documentation](https://typescript-eslint.io/getting-started/typed-linting/)
-- [x] 💯 Just to pursue higher code quality, no more
-- [ ] 🌐 Add more language support
+- 🎨 Format with **Prettier**
+- ⚡ Designed to work with **Vue3** & **TypeScript** or **React** & **TypeScript**
+- 📋 [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new)
+- 🚫 Ignores common files like `node_modules`, `dist` and files in `.gitignore`
+- 🎯 Best practices, only one-line of config
+- 💬 Built-in `@stylistic/eslint-plugin`'s [@stylistic/spaced-comment](https://eslint.style/rules/spaced-comment) rule to add spaces after comments (perfect for perfectionists 😬)
+- <img src="https://avatars.githubusercontent.com/u/67109815" width="18" height="18" alt="Tailwindcss"> Built-in Tailwindcss 3/4 auto formatting/linting plugin support, [related documentation](https://github.com/schoero/eslint-plugin-better-tailwindcss), see [usage](#use-tailwindcss-eslint-plugin) for details
+- 💡 **React** + **TypeScript** will enable `type-aware` by default, [related documentation](https://typescript-eslint.io/getting-started/typed-linting/)
+- 🔀 Sort related, sort imports, sort package.json, pnpm-workspace.yaml, tsconfig.json...
+- 💯 Just to pursue higher code quality, no more
+- TODO:Add more language support
 
 ## Install
 
