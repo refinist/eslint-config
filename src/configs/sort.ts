@@ -18,42 +18,44 @@ export const sortPackageJson = (): Config[] => [
         'error',
         {
           order: [
+            'publisher',
             'name',
+            'displayName',
+            'type',
             'version',
             'private',
             'packageManager',
             'description',
-            'type',
-            'keywords',
-            'license',
-            'homepage',
-            'bugs',
-            'repository',
             'author',
             'contributors',
+            'license',
             'funding',
-            'files',
+            'homepage',
+            'repository',
+            'bugs',
+            'keywords',
+            'categories',
+            'sideEffects',
+            'imports',
+            'exports',
             'main',
             'module',
-            'types',
-            'exports',
-            'typesVersions',
-            'sideEffects',
             'unpkg',
             'jsdelivr',
-            'browser',
+            'types',
+            'typesVersions',
             'bin',
-            'man',
-            'directories',
-            'publishConfig',
+            'icon',
+            'files',
+            'engines',
+            'activationEvents',
+            'contributes',
             'scripts',
             'peerDependencies',
             'peerDependenciesMeta',
-            'optionalDependencies',
             'dependencies',
+            'optionalDependencies',
             'devDependencies',
-            'engines',
-            'config',
             'pnpm',
             'overrides',
             'resolutions',
@@ -61,7 +63,8 @@ export const sortPackageJson = (): Config[] => [
             'simple-git-hooks',
             'lint-staged',
             'eslintConfig',
-            'prettier'
+            'prettier',
+            'tsdown'
           ],
           pathPattern: '^$'
         },
@@ -84,7 +87,7 @@ export const sortPackageJson = (): Config[] => [
 
 export const sortTsconfig = (): Config[] => [
   {
-    files: ['**/tsconfig.json', '**/tsconfig.*.json'],
+    files: ['**/[jt]sconfig.json', '**/[jt]sconfig.*.json'],
     name: 'refinist/sort/tsconfig',
     rules: {
       'jsonc/sort-keys': [
@@ -122,6 +125,7 @@ export const sortTsconfig = (): Config[] => [
             'useDefineForClassFields',
             'emitDecoratorMetadata',
             'experimentalDecorators',
+            'libReplacement',
             /* Modules */
             'baseUrl',
             'rootDir',
@@ -175,7 +179,6 @@ export const sortTsconfig = (): Config[] => [
             'importsNotUsedAsValues',
             'inlineSourceMap',
             'inlineSources',
-            'isolatedDeclarations',
             'mapRoot',
             'newLine',
             'noEmit',
@@ -193,9 +196,11 @@ export const sortTsconfig = (): Config[] => [
             'allowSyntheticDefaultImports',
             'esModuleInterop',
             'forceConsistentCasingInFileNames',
+            'isolatedDeclarations',
             'isolatedModules',
             'preserveSymlinks',
             'verbatimModuleSyntax',
+            'erasableSyntaxOnly',
             /* Completeness */
             'skipDefaultLibCheck',
             'skipLibCheck'
@@ -219,33 +224,19 @@ export const sortPnpmWorkspace = (): Config[] => [
             'packages',
             'overrides',
             'patchedDependencies',
-            'hoistPattern',
+
             'defines',
             'catalog',
             'catalogs',
 
-            'allowedDeprecatedVersions',
-            'allowNonAppliedPatches',
-            'configDependencies',
-            'ignoredBuiltDependencies',
-            'ignoredOptionalDependencies',
-            'neverBuiltDependencies',
-            'onlyBuiltDependencies',
-            'onlyBuiltDependenciesFile',
-            'packageExtensions',
-            'peerDependencyRules',
-            'supportedArchitectures'
+            { order: { type: 'asc' } }
           ],
           pathPattern: '^$'
         },
         {
           allowLineSeparatedGroups: true,
           order: { type: 'asc' },
-          pathPattern: '^catalog$'
-        },
-        {
-          order: { type: 'asc' },
-          pathPattern: `^catalogs$`
+          pathPattern: '^(catalog|catalogs|overrides)$'
         },
         {
           allowLineSeparatedGroups: true,
@@ -264,6 +255,10 @@ export const sortImports = (): Config[] => [
       perfectionist: pluginPerfectionist
     },
     rules: {
+      'perfectionist/sort-exports': [
+        'error',
+        { groups: ['value-export', 'type-export'], type: 'natural' }
+      ],
       'perfectionist/sort-imports': [
         'warn',
         {
@@ -271,29 +266,33 @@ export const sortImports = (): Config[] => [
             'builtin',
             'external',
             'internal',
-            'internal-type',
             'parent',
-            'parent-type',
+            'subpath',
             'sibling',
-            'sibling-type',
             'index',
-            'index-type',
-            'object',
+            'style',
             'type',
             'side-effect',
             'side-effect-style'
           ],
           internalPattern: ['^[~@#]/.*'],
-          newlinesBetween: 'ignore'
+          newlinesBetween: 'ignore',
+          type: 'natural'
         }
       ],
       'perfectionist/sort-named-exports': [
         'warn',
-        { groupKind: 'values-first' }
+        {
+          groups: ['value-export', 'type-export'],
+          type: 'natural'
+        }
       ],
       'perfectionist/sort-named-imports': [
         'warn',
-        { groupKind: 'values-first' }
+        {
+          groups: ['value-import', 'type-import'],
+          type: 'natural'
+        }
       ]
     }
   }

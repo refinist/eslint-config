@@ -1,12 +1,7 @@
-import type { Linter } from 'eslint';
-import type { Config } from '../types';
-
-import { isPackageExists } from 'local-pkg';
-
 import pluginReact from '@eslint-react/eslint-plugin';
 import pluginReactHooks from 'eslint-plugin-react-hooks';
 import pluginReactRefresh from 'eslint-plugin-react-refresh';
-
+import { isPackageExists } from 'local-pkg';
 import {
   GLOB_ASTRO_TS,
   GLOB_MARKDOWN,
@@ -14,6 +9,8 @@ import {
   GLOB_TS,
   GLOB_TSX
 } from '../globs';
+import type { Config } from '../types';
+import type { Linter } from 'eslint';
 
 // react refresh
 const ReactRefreshAllowConstantExportPackages = ['vite'];

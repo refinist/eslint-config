@@ -1,5 +1,5 @@
-import { pluginBetterTailwindcss } from '../plugins';
 import { GLOB_TAILWINDCSS } from '../globs';
+import { pluginBetterTailwindcss } from '../plugins';
 import type { Config } from '../types';
 
 type TailwindcssOptionsBase = {

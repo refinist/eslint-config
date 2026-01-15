@@ -1,7 +1,7 @@
 import { GLOB_JS, GLOB_TS, GLOB_TSX } from '../globs';
 import { tseslint } from '../plugins';
-import type { Config } from '../types';
 import { restrictedSyntaxJs } from './javascript';
+import type { Config } from '../types';
 
 export const typescriptCore = ({
   typeAware = false
