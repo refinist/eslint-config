@@ -15,7 +15,7 @@ ESLint config preset for JavaScript, TypeScript, Vue, React, and Prettier
 - 🎯 Best practices, only one-line of config
 - 💬 Built-in `@stylistic/eslint-plugin`'s [@stylistic/spaced-comment](https://eslint.style/rules/spaced-comment) rule to add spaces after comments (perfect for perfectionists 😬)
 - <img src="https://avatars.githubusercontent.com/u/67109815" width="18" height="18" alt="Tailwindcss"> Built-in Tailwindcss 3/4 auto formatting/linting plugin support, [related documentation](https://github.com/schoero/eslint-plugin-better-tailwindcss), see [usage](#use-tailwindcss-eslint-plugin) for details
-- 💡 **React** + **TypeScript** will enable `type-aware` by default, [related documentation](https://typescript-eslint.io/getting-started/typed-linting/)
+- 💡 Enable `type-aware` via `typescript.tsconfigPath` configuration, benefiting both TypeScript and React, [related documentation](https://typescript-eslint.io/getting-started/typed-linting/)
 - 🔀 Sort related, sort imports, sort package.json, pnpm-workspace.yaml, tsconfig.json...
 - 💯 Just to pursue higher code quality, no more
 - TODO:Add more language support
@@ -39,13 +39,31 @@ bun add -D @refinist/eslint-config
 ```
 
 > [!WARNING]
-> If you use react, please install these three packages `pnpm add -D @eslint-react/eslint-plugin eslint-plugin-react-hooks eslint-plugin-react-refresh` and import react eslint config `import { react } from '@refinist/eslint-config/react'` like this 👇
+> If you use react, please install these three packages `pnpm add -D @eslint-react/eslint-plugin@^1.52.3 eslint-plugin-react-hooks@^5.2.0 eslint-plugin-react-refresh@^0.4.20` and import react eslint config `import { react } from '@refinist/eslint-config/react'` like this 👇
 
 ```ts
 // eslint.config.ts
 import { refinist } from '@refinist/eslint-config';
 import { react } from '@refinist/eslint-config/react';
 export default refinist({}, react());
+```
+
+#### Enable type-aware
+
+Configure `typescript.tsconfigPath` to automatically enable type-aware rules for both TypeScript and React:
+
+```ts
+// eslint.config.ts
+import { refinist } from '@refinist/eslint-config';
+import { react } from '@refinist/eslint-config/react';
+export default refinist(
+  {
+    typescript: {
+      tsconfigPath: 'tsconfig.json'
+    }
+  },
+  react()
+);
 ```
 
 Require Node.js >= 20.0.0, and ESLint >= 9.5.0.

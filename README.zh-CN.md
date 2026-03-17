@@ -15,7 +15,7 @@
 - 🎯 最佳实践，只需一行配置
 - 💬 内置 `@stylistic/eslint-plugin` 的 [@stylistic/spaced-comment](https://eslint.style/rules/spaced-comment) 规则，在注释后添加空格（适合强迫症😬）
 - <img src="https://avatars.githubusercontent.com/u/67109815" width="18" height="18" alt="Tailwindcss"> 内置 Tailwindcss 3/4 自动格式化/纠错插件支持，[相关文档](https://github.com/schoero/eslint-plugin-better-tailwindcss)，使用方法见[这里](#使用-tailwindcss-eslint-插件)
-- 💡 **React** + **TypeScript** 会默认启用 `type-aware`，[相关资料](https://typescript-eslint.io/getting-started/typed-linting/)
+- 💡 通过 `typescript.tsconfigPath` 配置启用 `type-aware`，TypeScript 和 React 均可受益，[相关资料](https://typescript-eslint.io/getting-started/typed-linting/)
 - 🔀 排序相关，排序 imports, 排序 package.json，pnpm-workspace.yaml，tsconfig.json...
 - 💯 只为追求更高的代码质量，仅此而已
 - TODO:添加更多语言支持
@@ -39,13 +39,31 @@ bun add -D @refinist/eslint-config
 ```
 
 > [!WARNING]
-> 如果你使用 react，请额外安装这三个包 `pnpm add -D @eslint-react/eslint-plugin eslint-plugin-react-hooks eslint-plugin-react-refresh`，然后手动引入 react eslint 包 `import { react } from '@refinist/eslint-config/react'` 配置如下👇
+> 如果你使用 react，请额外安装这三个包 `pnpm add -D @eslint-react/eslint-plugin@^1.52.3 eslint-plugin-react-hooks@^5.2.0 eslint-plugin-react-refresh@^0.4.20`，然后手动引入 react eslint 包 `import { react } from '@refinist/eslint-config/react'` 配置如下👇
 
 ```ts
 // eslint.config.ts
 import { refinist } from '@refinist/eslint-config';
 import { react } from '@refinist/eslint-config/react';
 export default refinist({}, react());
+```
+
+#### 启用 type-aware
+
+配置 `typescript.tsconfigPath` 后，TypeScript 和 React 都会自动启用 type-aware 规则：
+
+```ts
+// eslint.config.ts
+import { refinist } from '@refinist/eslint-config';
+import { react } from '@refinist/eslint-config/react';
+export default refinist(
+  {
+    typescript: {
+      tsconfigPath: 'tsconfig.json'
+    }
+  },
+  react()
+);
 ```
 
 需要 Node.js >= 20.0.0 和 ESLint >= 9.5.0。

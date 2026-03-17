@@ -28,19 +28,24 @@ const ReactRouterPackages = [
 ];
 const NextJsPackages = ['next'];
 
-export const react = (): Config[] => {
+export interface ReactOptions {
+  files?: string[];
+  filesTypeAware?: string[];
+  ignoresTypeAware?: string[];
+  overrides?: Linter.Config['rules'];
+}
+
+export type ReactConfigs = Config[] & {
+  typeAware: () => Config[];
+};
+
+export const react = (options: ReactOptions = {}): ReactConfigs => {
   const {
     files = [GLOB_SRC],
     filesTypeAware = [GLOB_TS, GLOB_TSX],
     ignoresTypeAware = [`${GLOB_MARKDOWN}/**`, GLOB_ASTRO_TS],
     overrides = {}
-  } = {};
-
-  const isTypeAware = true;
-
-  const typeAwareRules: Linter.Config['rules'] = {
-    'react/no-leaked-conditional-rendering': 'warn'
-  };
+  } = options;
 
   const isAllowConstantExport = ReactRefreshAllowConstantExportPackages.some(
     i => isPackageExists(i)
@@ -51,7 +56,7 @@ export const react = (): Config[] => {
 
   const plugins = pluginReact.configs.all.plugins;
 
-  return [
+  const configs: Config[] = [
     {
       name: 'refinist/react/setup',
       plugins: {
@@ -191,18 +196,19 @@ export const react = (): Config[] => {
         // overrides
         ...overrides
       }
-    },
-    ...(isTypeAware
-      ? [
-          {
-            files: filesTypeAware,
-            ignores: ignoresTypeAware,
-            name: 'refinist/react/type-aware-rules',
-            rules: {
-              ...typeAwareRules
-            }
-          }
-        ]
-      : [])
+    }
   ];
+
+  return Object.assign(configs, {
+    typeAware: (): Config[] => [
+      {
+        files: filesTypeAware,
+        ignores: ignoresTypeAware,
+        name: 'refinist/react/type-aware-rules',
+        rules: {
+          'react/no-leaked-conditional-rendering': 'warn'
+        }
+      }
+    ]
+  });
 };

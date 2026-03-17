@@ -15,21 +15,25 @@ import {
   type TailwindcssOptions
 } from './configs';
 import { hasVue } from './env';
+import type { ReactConfigs } from './configs/react';
 import type { Arrayable, Config } from './types';
 import type { Linter } from 'eslint';
 
-const presetBasic = ({ typeAware = false }: { typeAware?: boolean } = {}) => [
+const presetBasic = ({ tsconfigPath }: { tsconfigPath?: string } = {}) => [
   ...ignores(),
   ...javascript(),
   ...stylistic(),
 
-  ...typescript({ typeAware }),
+  ...typescript({ tsconfigPath }),
 
   ...sortImports(),
   ...yml()
 ];
 
 export interface Options {
+  typescript?: {
+    tsconfigPath?: string;
+  };
   vue?: boolean;
   prettier?: boolean;
   tailwindcss?: TailwindcssOptions;
@@ -50,19 +54,25 @@ export function refinist(
   ...userConfigs: Arrayable<Config | Linter.Config>[]
 ): Config[] {
   const {
+    typescript: typescriptOptions,
     vue: enableVue = hasVue(),
     prettier: enablePrettier = true,
     tailwindcss: tailwindcssOptions,
     sortKeys: enableSortKeys = true
   } = options;
+  const tsconfigPath = typescriptOptions?.tsconfigPath;
   const _userConfigs = [...userConfigs.flat()];
   const hasReact = _userConfigs.some(_ => _.name?.includes('refinist/react'));
 
-  const configs: Config[] = [
-    ...presetBasic({
-      typeAware: hasReact
-    })
-  ];
+  const configs: Config[] = [...presetBasic({ tsconfigPath })];
+
+  if (hasReact && tsconfigPath) {
+    for (const userConfig of userConfigs) {
+      if (Array.isArray(userConfig) && 'typeAware' in userConfig) {
+        configs.push(...(userConfig as ReactConfigs).typeAware());
+      }
+    }
+  }
 
   if (enableVue) {
     configs.push(...vue());

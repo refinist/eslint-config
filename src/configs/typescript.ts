@@ -4,22 +4,26 @@ import { restrictedSyntaxJs } from './javascript';
 import type { Config } from '../types';
 
 export const typescriptCore = ({
-  typeAware = false
-}: { typeAware?: boolean } = {}) =>
+  tsconfigPath
+}: { tsconfigPath?: string } = {}) => {
+  const isTypeAware = !!tsconfigPath;
+
   // https://typescript-eslint.io/getting-started/typed-linting/
-  // 📝 for react: react/no-leaked-conditional-rendering
-  tseslint.config({
+  return tseslint.config({
     extends: [
-      ...(typeAware
+      ...(isTypeAware
         ? tseslint.configs.recommendedTypeChecked
         : tseslint.configs.recommended)
     ],
 
-    ...(typeAware
+    ...(isTypeAware
       ? {
           languageOptions: {
             parserOptions: {
-              projectService: true,
+              projectService: {
+                allowDefaultProject: ['./*.js'],
+                defaultProject: tsconfigPath
+              },
               tsconfigRootDir: process.cwd()
             }
           }
@@ -73,11 +77,12 @@ export const typescriptCore = ({
       ]
     }
   }) as Config[];
+};
 
 export const typescript = ({
-  typeAware = false
-}: { typeAware?: boolean } = {}): Config[] => [
-  ...typescriptCore({ typeAware }),
+  tsconfigPath
+}: { tsconfigPath?: string } = {}): Config[] => [
+  ...typescriptCore({ tsconfigPath }),
 
   {
     files: ['**/*.d.ts'],
