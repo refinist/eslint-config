@@ -83,7 +83,7 @@
   },
   "devDependencies": {
     "@refinist/prettier-config": "^0.0.3",
-    "@types/node": "^22.15.29",
+    "@types/node": "^24.12.2",
     "bumpp": "^10.1.1",
     "eslint": "^9.28.0",
     "tsdown": "^0.13.0",
